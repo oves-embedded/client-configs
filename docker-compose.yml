@@ -1,0 +1,11 @@
+version: '2'
+services:
+  mqtt:
+   build: .
+   container_name: feature-new-client-broker
+   ports:
+     - 18884:18884
+   volumes:
+     - './feature-new-client-broker/config:/feature-new-client-broker/config'
+     - './feature-new-client-broker/data:/feature-new-client-broker/data'
+     - './feature-new-client-broker/log:/feature-new-client-broker/log'
