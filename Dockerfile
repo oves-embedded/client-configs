@@ -97,9 +97,12 @@ RUN set -x && \
 
 VOLUME ["/mosquitto/data", "/mosquitto/log"]
 
+# Read the port number from the .env file
+ENV PORT=$(cat .env | grep PORT | cut -d '=' -f2)
+
 # Set up the entry point script and default command
 COPY docker-entrypoint.sh /
 COPY mosquitto.conf password.txt ca.crt client.crt client.csr client.key /mosquitto/config/
-EXPOSE 18884
+EXPOSE $PORT
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/usr/sbin/mosquitto", "-c", "/mosquitto/config/mosquitto.conf"]

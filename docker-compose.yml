@@ -4,7 +4,7 @@ services:
    build: .
    container_name: feature-new-client-broker
    ports:
-     - 18884:18884
+     - "${PORT}:${PORT}"
    volumes:
      - './feature-new-client-broker/config:/feature-new-client-broker/config'
      - './feature-new-client-broker/data:/feature-new-client-broker/data'
